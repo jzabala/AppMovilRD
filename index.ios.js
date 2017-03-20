@@ -1,5 +1,5 @@
 // @flow
 import { AppRegistry } from 'react-native';
-import App from './src/components/App';
+import Laytout from './src/components/Laytout';
 
-AppRegistry.registerComponent('AppMovilRD', () => App);
+AppRegistry.registerComponent('AppMovilRD', () => Laytout);

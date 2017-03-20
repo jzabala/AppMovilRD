@@ -3,7 +3,7 @@ import { View, Text, TabBarIOS, StyleSheet, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { isIOS } from '../../utils/platform';
 
-class App extends React.Component {
+class Laytout extends React.Component {
   state = {
     selectedTab: 'processesTab'
   }
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default Laytout;

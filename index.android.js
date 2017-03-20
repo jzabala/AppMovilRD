@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './src/components/App/android/App'
+import Laytout from './src/components/Layout'
 
-AppRegistry.registerComponent('AppMovilRD', () => App);
+AppRegistry.registerComponent('AppMovilRD', () => Laytout);
