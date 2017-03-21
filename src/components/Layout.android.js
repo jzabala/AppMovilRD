@@ -1,39 +1,41 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight, Animated, Button, ScrollView } from 'react-native';
 import { SideMenu, List, ListItem, Icon } from 'react-native-elements';
+import  { StackNavigator }  from 'react-navigation';
 
-
-class Laytout extends React.Component{
+class Layout extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      optionSelect : 'list_item',
       isOpen : false
     }
-    this._onPressButton = this._onPressButton.bind(this);
   }
-
-  componentDidMount() {
+  static navigationOptions = {
+    title: 'Home'
   }
-  _onPressButton() {
-    this.setState({...this.state, optionSelect : 'what up', showMaster : !this.state.showMaster});
- }
  toggleSideMenu (){
    this.setState({ isOpen : !this.state.isOpen })
  }
   render(){
-    const sideMenuNameItem = ['item1', 'item2', 'item3'];
+    const sideMenuNameItem = [
+                               {title : 'item1', icon : 'tasks', page : 'Setting'},
+                               {title : 'item2', icon : 'tasks', page : 'Setting'},
+                               {title : 'item3', icon : 'filter', page : 'Setting'},
+                               {title : 'item4', icon : 'cog', page : 'Setting'},
+                               {title : 'item5', icon : 'exclamation-circle', page : 'Setting'},
+                             ];
+    const { navigate } = this.props.navigation;
     const MenuComponent = (
         <View style={styles.master_container}>
         <List containerStyle={{marginBottom: 20}}>
         {
           sideMenuNameItem.map((item, index) => (
             <ListItem
-              onPress = {() => console.log('Pressed')}
+              onPress = {() => navigate(item.page)}
               hideChevron={true}
-              leftIcon={{type:'font-awesome', name:'heartbeat', color:'#f50' }}
+              leftIcon={{type:'font-awesome', name:item.icon, color:'#f50' }}
               key={index}
-              title={item}
+              title={item.title}
               titleStyle = {{color:'white'}}
               containerStyle={{backgroundColor : 'dodgerblue'}}
             />
@@ -47,10 +49,12 @@ class Laytout extends React.Component{
       <SideMenu
         isOpen={this.state.isOpen}
         menu={MenuComponent}>
-          <View  style={styles.detail_container} toggleSideMenu={this.toggleSideMenu.bind(this)}>
-            <View>
-            <Text>Welcome</Text>
-            </View>
+          <View
+            style={styles.detail_container}
+            toggleSideMenu={this.toggleSideMenu.bind(this)}>
+              <View>
+                <Text>Welcome</Text>
+              </View>
           </View>
       </SideMenu>
     );
@@ -74,4 +78,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Laytout;
+export default Layout;

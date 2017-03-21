@@ -1,4 +1,5 @@
+'use strict';
 import { AppRegistry } from 'react-native';
-import Laytout from './src/components/Layout'
+import StartUpApp from './src/components/StartUpApp';
 
-AppRegistry.registerComponent('AppMovilRD', () => Laytout);
+AppRegistry.registerComponent('AppMovilRD', () => StartUpApp);
